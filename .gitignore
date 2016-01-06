@@ -1,0 +1,8 @@
+# only src
+bin/
+.settings/
+lib/
+
+Setting.properties
+.project
+.classpath
