@@ -51,10 +51,10 @@ public class CommonAccesser {
 	public CommonAccesser(String propFile) {
 
 		// 解析配置文件
-		String[] propNames = { "datasource", "username", "password", "cpsize" };
+		String[] propNames = { "driver", "datasource", "username", "password", "cpsize" };
 		HashMap<String, String> propMap = PropertiesAnalyzer.readProperties(
 				propFile, propNames);
-
+		
 		// 创建连接池控制器
 		cpController = new ConnectionPoolController(propMap);
 

@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 
-
 /**
  * 连接池控制器
  */
@@ -87,6 +86,14 @@ public class ConnectionPoolController {
 		username = propMap.get("username");
 		password = propMap.get("password");
 		cpsize = Integer.parseInt(propMap.get("cpsize"));
+
+		// 解决某些情况下不能自动设别驱动
+		try {
+			Class.forName(propMap.get("driver"));
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**

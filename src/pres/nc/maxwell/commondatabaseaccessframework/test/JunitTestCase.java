@@ -21,7 +21,7 @@ public class JunitTestCase {
 	@Test
 	public void testQueryTask() {
 		CommonAccesser accesser = new CommonAccesser(PROP_FILE);
-		accesser.setThreadPool(1, 5);// 单线程
+		//accesser.setThreadPool(1, 5);// 单线程
 
 		// 重复提交次数
 		int repeatTimes = 200;
