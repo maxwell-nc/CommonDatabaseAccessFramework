@@ -131,7 +131,7 @@ public class ConnectionPoolController {
 
 				conn = createConnecion();
 				if (conn != null) {
-					connectionPool.put(conn, CONNECTION_STATE_IDLE);
+					connectionPool.put(conn, CONNECTION_STATE_WORKING);
 					LogController.log(this,
 							"创建连接" + Integer.toHexString(conn.hashCode()));
 
