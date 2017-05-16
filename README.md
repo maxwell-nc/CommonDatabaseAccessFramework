@@ -9,7 +9,8 @@
 整个框架采用JDBC连接数据库，理论支持任何支持JDBC的数据库
 目前测试了MySQL和MS SQLServer
 .test.JunitTestCase中提供了测试用例是基于MS SQLServer
-由于项目改编自https://github.com/maxwell-nc/SimpleMySqlAccessFramework，可以参考这个项目找到MySQL的测试代码（需要修改）
+由于项目改编自[https://github.com/maxwell-nc/SimpleMySqlAccessFramework](https://github.com/maxwell-nc/SimpleMySqlAccessFramework)
+可以参考这个项目找到MySQL的测试代码（需要修改）
 
 # 测试用的数据库结构
 ```
@@ -19,3 +20,25 @@ mytest(数据库)
       - pass varchar(50) not null
 ```
 由于MS SQLServer导出的SQL脚本文件不是很通用，所以没有导出。
+
+# 使用方法
+下面是最简单的使用方法，实现一次异步查询
+(一般操作的话只需要操作CommonAccesser和ResultProcesser这两个类)
+```java
+CommonAccesser accesser = new CommonAccesser(PROP_FILE);
+
+accesser.asyncQuery(new SimpleOnGetResultSetListener() {
+
+	@Override
+	public void onGetResultSet(ResultSet rs) {
+		//处理结果集的代码...
+	}
+	
+}, "select * from usertable");
+
+accesser.close();
+```
+
+详细的测试用例可以参考给出的源代码中的.test.JunitTestCase和README.md文件
+
+以后可能添加一些阻塞查询和不使用线程池查询。
